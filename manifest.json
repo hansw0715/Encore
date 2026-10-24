@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "ENCORE — 탭 사운드 공연장",
+  "description": "지금 탭에서 나오는 모든 소리를 내 컴퓨터 안에서 스타디움 공연장 사운드로 바꿉니다. 좌석, 울림, 관객, 고개 방향을 조절하세요.",
+  "version": "0.2.0",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "activeTab",
+    "tabCapture",
+    "offscreen",
+    "storage",
+    "sidePanel",
+    "tabs"
+  ],
+  "background": {
+    "service_worker": "worker.js"
+  },
+  "action": {
+    "default_title": "이 탭 소리를 공연장으로 듣기",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "side_panel": {
+    "default_path": "panel.html"
+  },
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'"
+  }
+}

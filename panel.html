@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ENCORE</title><link rel="stylesheet" href="fonts/do-hyeon.css"><link rel="stylesheet" href="panel.css"></head>
+<body>
+<main>
+ <header class="top">
+  <h1 class="mark">ENCORE</h1>
+  <div class="link" id="link" data-state="idle">
+   <span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+   <span id="linkText">연결 안 됨</span>
+   <button id="linkBtn" type="button" hidden>해제</button>
+  </div>
+ </header>
+ <section class="picker" aria-label="공연장 사운드를 적용할 탭">
+  <button id="tabPick" class="tab-pick" type="button" aria-expanded="false" aria-controls="tabList">
+   <span class="tp-label">적용할 탭</span>
+   <span id="tabPickTitle" class="tp-title">탭을 골라주세요</span>
+   <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>
+  </button>
+  <ul id="tabList" class="tab-list" hidden></ul>
+ </section>
+ <p id="status" role="status"></p>
+
+ <section class="dial-wrap" aria-label="고개 방향">
+  <svg id="dial" class="dial" viewBox="0 0 200 200" role="slider" tabindex="0" aria-label="고개 방향" aria-valuemin="-180" aria-valuemax="180" aria-valuenow="0" aria-valuetext="무대 정면">
+   <defs>
+    <radialGradient id="beam" cx="100" cy="100" r="92" gradientUnits="userSpaceOnUse"><stop offset="0" stop-opacity=".55"/><stop offset="1" stop-opacity="0"/></radialGradient>
+   </defs>
+   <circle class="floor" cx="100" cy="100" r="92"/>
+   <circle class="ring" cx="100" cy="100" r="70"/>
+   <g class="ticks" id="ticks"></g>
+   <g class="stage" id="stage">
+    <path class="stage-glow" d="M38 34 A92 92 0 0 1 162 34"/>
+    <path class="stage-edge" d="M50 30 A84 84 0 0 1 150 30"/>
+    <rect class="spk" x="42" y="24" width="7" height="13" rx="1.5"/>
+    <rect class="spk" x="151" y="24" width="7" height="13" rx="1.5"/>
+   </g>
+   <g class="head" id="listener">
+    <path class="cone" d="M100 100 L66 22 A84 84 0 0 1 134 22 Z" fill="url(#beam)"/>
+    <ellipse class="ear" cx="83" cy="100" rx="3.5" ry="6"/>
+    <ellipse class="ear" cx="117" cy="100" rx="3.5" ry="6"/>
+    <ellipse class="skull" cx="100" cy="100" rx="16" ry="18"/>
+    <path class="nose" d="M95 83 L100 75 L105 83 Z"/>
+   </g>
+  </svg>
+  <div class="dial-read">
+   <span aria-hidden="true"></span>
+   <output id="turnText">무대 정면</output>
+   <button id="recenter" type="button">정면 보기</button>
+  </div>
+ </section>
+
+ <section class="switch-row">
+  <div>
+   <h2>공연장 사운드</h2>
+   <p id="effectText">스타디움 울림과 관객 소리를 더해 들려줘요.</p>
+  </div>
+  <button id="effect" class="switch" type="button" role="switch" aria-checked="true" aria-label="공연장 사운드"><span></span></button>
+ </section>
+
+ <section class="faders" aria-label="소리 조절">
+  <label class="fader" for="clarity"><span>보컬 선명도</span><output id="clarityO">50</output><input id="clarity" type="range" min="0" max="100" value="50"></label>
+  <label class="fader" for="rev"><span>울림</span><output id="revO">25</output><input id="rev" type="range" min="0" max="100" value="25"></label>
+  <label class="fader" for="crowd"><span>관객 배경 소리</span><output id="crowdO">50</output><input id="crowd" type="range" min="0" max="100" value="50"></label>
+  <label class="fader" for="head"><span>방향감</span><output id="headO">65</output><input id="head" type="range" min="0" max="100" value="65"></label>
+  <label class="fader" for="vol"><span>볼륨</span><output id="volO">30</output><input id="vol" type="range" min="0" max="100" value="30"></label>
+ </section>
+</main>
+<script src="settings.js"></script><script src="panel.js"></script>
+</body></html>
